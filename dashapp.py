@@ -14,8 +14,9 @@ warnings.filterwarnings('ignore')
 # Define the main function
 def generate_plot():
     # File paths and configurations
-    desktop_path = os.path.expanduser('~')
-    filename = os.path.join(desktop_path, 'Desktop', 'Data_10.04.24.xlsx')
+# File paths and configurations
+    repo_path = os.path.dirname(os.path.abspath(__file__))  # Directory of the current script
+    filename = os.path.join(repo_path, 'Data_10.04.24.xlsx')  # Excel file path in the same repo
     encoding_type = 'ISO-8859-1'
     sheets = ["sleep", "free_time", "schedule", "caffein"]
     dfs = []
@@ -65,70 +66,70 @@ def generate_plot():
     top_todos = df_schedule_not_done.sort_values(by='Adj. Priority', ascending=False).head(7)
 
     # Load sleep data from the CSV
-    filename_sleep = os.path.join(desktop_path, 'Desktop', 'Dektop', 'Sleep Analysis Data 3.csv')
-    df_sleep = pd.read_csv(filename_sleep, encoding=encoding_type, delimiter=',', on_bad_lines='skip')
+    #filename_sleep = os.path.join(desktop_path, 'Desktop', 'Dektop', 'Sleep Analysis Data 3.csv')
+    #df_sleep = pd.read_csv(filename_sleep, encoding=encoding_type, delimiter=',', on_bad_lines='skip')
 
     # Process df_sleep
-    one_week_ago = pd.Timestamp.now(tz='UTC') - pd.Timedelta(weeks=1)
-    df_sleep['Start'] = pd.to_datetime(df_sleep['Start'], utc=True)
-    df_sleep['End'] = pd.to_datetime(df_sleep['End'], utc=True)
-    df_sleep = df_sleep[df_sleep['Start'] >= one_week_ago]
-    df_sleep.rename(columns={'End': 'stop', 'Start': 'start', 'Value': 'Activity'}, inplace=True)
-    df_sleep = df_sleep[df_sleep['Source'] == 'AppleÂ Watch von Christian']
-    df_sleep['Priority'] = 0
-    df_sleep['Category'] = 'sleep'
-    df_sleep['Comment'] = ''
-    df_sleep['Adj. Priority'] = 0
-    df_sleep['Estimate'] = 60
-    df_sleep['duration'] = (df_sleep['stop'] - df_sleep['start']).dt.total_seconds() / 60
+    #one_week_ago = pd.Timestamp.now(tz='UTC') - pd.Timedelta(weeks=1)
+    #df_sleep['Start'] = pd.to_datetime(df_sleep['Start'], utc=True)
+    #df_sleep['End'] = pd.to_datetime(df_sleep['End'], utc=True)
+    #df_sleep = df_sleep[df_sleep['Start'] >= one_week_ago]
+    #df_sleep.rename(columns={'End': 'stop', 'Start': 'start', 'Value': 'Activity'}, inplace=True)
+    #df_sleep = df_sleep[df_sleep['Source'] == 'AppleÂ Watch von Christian']
+    #df_sleep['Priority'] = 0
+    #df_sleep['Category'] = 'sleep'
+    #df_sleep['Comment'] = ''
+    #df_sleep['Adj. Priority'] = 0
+    #df_sleep['Estimate'] = 60
+    #df_sleep['duration'] = (df_sleep['stop'] - df_sleep['start']).dt.total_seconds() / 60
 
     # Drop unnecessary columns
-    df_sleep.drop(columns=['Duration (hr)', 'Source'], inplace=True, errors='ignore')
-    df_sleep['Date'] = df_sleep['start'].dt.date
-    df_sleep = df_sleep[~df_sleep['Activity'].isin(['InBed', 'Asleep'])]
+    #df_sleep.drop(columns=['Duration (hr)', 'Source'], inplace=True, errors='ignore')
+    #df_sleep['Date'] = df_sleep['start'].dt.date
+    #df_sleep = df_sleep[~df_sleep['Activity'].isin(['InBed', 'Asleep'])]
 
     # File paths for calendars
-    file_path_schule = os.path.join(desktop_path, 'Desktop', 'Dektop', 'Calenders', 'Schule_Events.csv')
-    file_path_arbeit = os.path.join(desktop_path, 'Desktop', 'Dektop', 'Calenders', 'Arbeit_Events.csv')
-    file_path_dashboard = os.path.join(desktop_path, 'Desktop', 'Dektop', 'Calenders', 'Dashboard_Events.csv')
+    #file_path_schule = os.path.join(desktop_path, 'Desktop', 'Dektop', 'Calenders', 'Schule_Events.csv')
+    #file_path_arbeit = os.path.join(desktop_path, 'Desktop', 'Dektop', 'Calenders', 'Arbeit_Events.csv')
+    #file_path_dashboard = os.path.join(desktop_path, 'Desktop', 'Dektop', 'Calenders', 'Dashboard_Events.csv')
 
     # Read calendar CSV files
-    df_schule = pd.read_csv(file_path_schule, encoding=encoding_type, delimiter=',', on_bad_lines='skip')
-    df_arbeit = pd.read_csv(file_path_arbeit, encoding=encoding_type, delimiter=',', on_bad_lines='skip')
-    df_dashboard = pd.read_csv(file_path_dashboard, encoding=encoding_type, delimiter=',', on_bad_lines='skip')
+    #df_schule = pd.read_csv(file_path_schule, encoding=encoding_type, delimiter=',', on_bad_lines='skip')
+    #df_arbeit = pd.read_csv(file_path_arbeit, encoding=encoding_type, delimiter=',', on_bad_lines='skip')
+    #df_dashboard = pd.read_csv(file_path_dashboard, encoding=encoding_type, delimiter=',', on_bad_lines='skip')
 
     # Assign additional attributes
-    df_schule['type'] = 'Schule'
-    df_arbeit['type'] = 'Arbeit'
-    df_dashboard['type'] = 'Dashboard'
-    df_schule['Priority'] = 5
-    df_arbeit['Priority'] = 4
-    df_dashboard['Priority'] = 3
+    #df_schule['type'] = 'Schule'
+    #df_arbeit['type'] = 'Arbeit'
+    #df_dashboard['type'] = 'Dashboard'
+    #df_schule['Priority'] = 5
+    #df_arbeit['Priority'] = 4
+    #df_dashboard['Priority'] = 3
 
     # Combine calendar data
-    df_cals = pd.concat([df_schule, df_arbeit, df_dashboard], ignore_index=True)
+    #df_cals = pd.concat([df_schule, df_arbeit, df_dashboard], ignore_index=True)
 
     # Specify the correct format for your date columns
     date_format = "%d.%m.%y %H:%M:%S"
 
     # Convert 'Start Date' and 'End Date' columns to datetime, specifying the correct format
-    df_cals['Start Date'] = pd.to_datetime(df_cals['Start Date'], format=date_format, errors='coerce', dayfirst=True)
-    df_cals['End Date'] = pd.to_datetime(df_cals['End Date'], format=date_format, errors='coerce', dayfirst=True)
+    #df_cals['Start Date'] = pd.to_datetime(df_cals['Start Date'], format=date_format, errors='coerce', dayfirst=True)
+    #df_cals['End Date'] = pd.to_datetime(df_cals['End Date'], format=date_format, errors='coerce', dayfirst=True)
 
     # Remove rows where date conversion failed
-    df_cals = df_cals.dropna(subset=['Start Date', 'End Date'])
+    #df_cals = df_cals.dropna(subset=['Start Date', 'End Date'])
 
     # Rename columns for further processing
-    df_cals.rename(columns={'Summary': 'Activity', 'Start Date': 'start', 'End Date': 'stop'}, inplace=True)
+    #df_cals.rename(columns={'Summary': 'Activity', 'Start Date': 'start', 'End Date': 'stop'}, inplace=True)
 
     # Further processing for plotting
-    df_cals['Estimate'] = (df_cals['stop'] - df_cals['start']).dt.total_seconds() / 60
-    df_cals['Adj. Priority'] = df_cals.apply(
-        lambda x: (x['Priority'] / x['Estimate'] * 60) if x['Estimate'] != 0 else 0, axis=1)
-    df_cals['Date'] = df_cals['start'].dt.date
+    #df_cals['Estimate'] = (df_cals['stop'] - df_cals['start']).dt.total_seconds() / 60
+    #df_cals['Adj. Priority'] = df_cals.apply(
+        #lambda x: (x['Priority'] / x['Estimate'] * 60) if x['Estimate'] != 0 else 0, axis=1)
+    #df_cals['Date'] = df_cals['start'].dt.date
 
     # Combine everything
-    combined_df_e_c = pd.concat([combined_df, df_cals, df_sleep], ignore_index=True)
+    combined_df_e_c = combined_df
     combined_df_e_c['Date'] = pd.to_datetime(combined_df_e_c['Date'], errors='coerce')
 
     # Ensure 'start' and 'stop' columns are in datetime format and localized
