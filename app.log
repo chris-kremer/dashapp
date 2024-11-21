@@ -1,0 +1,437 @@
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('CREATE TABLE IF NOT EXISTS "_kv" ("key" VARCHAR(255) NOT NULL PRIMARY KEY, "value" VARCHAR(255)) WITHOUT ROWID', [])
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['URTH', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - URTH: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/URTH
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+peewee - DEBUG - ('CREATE TABLE IF NOT EXISTS "_cookieschema" ("strategy" VARCHAR(255) NOT NULL PRIMARY KEY, "fetch_date" DATETIME NOT NULL, "cookie_bytes" BLOB NOT NULL) WITHOUT ROWID', [])
+peewee - DEBUG - ('SELECT "t1"."strategy", "t1"."fetch_date", "t1"."cookie_bytes" FROM "_cookieschema" AS "t1" WHERE ("t1"."strategy" = ?) LIMIT ? OFFSET ?', ['basic', 1, 0])
+urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): fc.yahoo.com:443
+urllib3.connectionpool - DEBUG - https://fc.yahoo.com:443 "GET / HTTP/11" 404 4744
+peewee - DEBUG - ('DELETE FROM "_cookieschema" WHERE ("_cookieschema"."strategy" = ?)', ['basic'])
+peewee - DEBUG - ('BEGIN', None)
+peewee - DEBUG - ('INSERT INTO "_cookieschema" ("strategy", "fetch_date", "cookie_bytes") VALUES (?, ?, ?)', ['basic', '2024-11-15T19:00:10.466478', <memory at 0x11d16d300>])
+yfinance - DEBUG - fetched basic cookie = <Cookie A3=d=AQABBCqMN2cCEFJlaacbsOn4a9P0EbG1Qz8FEgEBAQHdOGdBZ-AYyiMA_eMAAA&S=AQAAAugEvqb1Fl_3KEKqLsmeNWI for .yahoo.com/>
+yfinance - DEBUG - reusing cookie
+urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): query1.finance.yahoo.com:443
+urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v1/test/getcrumb HTTP/11" 200 11
+yfinance - DEBUG - crumb = '2whoJT/mDOC'
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): query2.finance.yahoo.com:443
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/URTH?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1221
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - URTH: yfinance received OHLC data: 2024-11-15 17:58:03 -> 2024-11-15 17:58:03
+yfinance - DEBUG - URTH: OHLC after cleaning: 2024-11-15 12:58:03-05:00 -> 2024-11-15 12:58:03-05:00
+yfinance - DEBUG - URTH: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - URTH: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 156.44500732421875 for URTH
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['WFC', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - WFC: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/WFC
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/WFC?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1182
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - WFC: yfinance received OHLC data: 2024-11-15 18:00:06 -> 2024-11-15 18:00:06
+yfinance - DEBUG - WFC: OHLC after cleaning: 2024-11-15 13:00:06-05:00 -> 2024-11-15 13:00:06-05:00
+yfinance - DEBUG - WFC: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - WFC: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 73.56500244140625 for WFC
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['HLBZF', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - HLBZF: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/HLBZF
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/HLBZF?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1175
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - HLBZF: yfinance received OHLC data: 2024-11-14 20:00:00 -> 2024-11-14 20:00:00
+yfinance - DEBUG - HLBZF: OHLC after cleaning: 2024-11-14 15:00:00-05:00 -> 2024-11-14 15:00:00-05:00
+yfinance - DEBUG - HLBZF: OHLC after combining events: 2024-11-14 00:00:00-05:00 -> 2024-11-14 00:00:00-05:00
+yfinance - DEBUG - HLBZF: yfinance returning OHLC: 2024-11-14 00:00:00-05:00 -> 2024-11-14 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 102.88999938964844 for HLBZF
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['C', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - C: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/C
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/C?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1148
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - C: yfinance received OHLC data: 2024-11-15 18:00:07 -> 2024-11-15 18:00:07
+yfinance - DEBUG - C: OHLC after cleaning: 2024-11-15 13:00:07-05:00 -> 2024-11-15 13:00:07-05:00
+yfinance - DEBUG - C: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - C: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 68.625 for C
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['BPAQF', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - BPAQF: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/BPAQF
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/BPAQF?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1175
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - BPAQF: yfinance received OHLC data: 2024-11-14 20:00:00 -> 2024-11-14 20:00:00
+yfinance - DEBUG - BPAQF: OHLC after cleaning: 2024-11-14 15:00:00-05:00 -> 2024-11-14 15:00:00-05:00
+yfinance - DEBUG - BPAQF: OHLC after combining events: 2024-11-14 00:00:00-05:00 -> 2024-11-14 00:00:00-05:00
+yfinance - DEBUG - BPAQF: yfinance returning OHLC: 2024-11-14 00:00:00-05:00 -> 2024-11-14 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 4.800000190734863 for BPAQF
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['POAHF', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - POAHF: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/POAHF
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/POAHF?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1217
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - POAHF: yfinance received OHLC data: 2024-11-15 16:17:58 -> 2024-11-15 16:17:58
+yfinance - DEBUG - POAHF: OHLC after cleaning: 2024-11-15 11:17:58-05:00 -> 2024-11-15 11:17:58-05:00
+yfinance - DEBUG - POAHF: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - POAHF: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 37.5099983215332 for POAHF
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['EXV1.DE', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - EXV1.DE: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/EXV1.DE
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/EXV1.DE?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1228
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - EXV1.DE: yfinance received OHLC data: 2024-11-15 16:36:15 -> 2024-11-15 16:36:15
+yfinance - DEBUG - EXV1.DE: OHLC after cleaning: 2024-11-15 17:36:15+01:00 -> 2024-11-15 17:36:15+01:00
+yfinance - DEBUG - EXV1.DE: OHLC after combining events: 2024-11-15 00:00:00+01:00 -> 2024-11-15 00:00:00+01:00
+yfinance - DEBUG - EXV1.DE: yfinance returning OHLC: 2024-11-15 00:00:00+01:00 -> 2024-11-15 00:00:00+01:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 20.469999313354492 for EXV1.DE
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['1COV.DE', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - 1COV.DE: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/1COV.DE
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/1COV.DE?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1190
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - 1COV.DE: yfinance received OHLC data: 2024-11-15 16:35:19 -> 2024-11-15 16:35:19
+yfinance - DEBUG - 1COV.DE: OHLC after cleaning: 2024-11-15 17:35:19+01:00 -> 2024-11-15 17:35:19+01:00
+yfinance - DEBUG - 1COV.DE: OHLC after combining events: 2024-11-15 00:00:00+01:00 -> 2024-11-15 00:00:00+01:00
+yfinance - DEBUG - 1COV.DE: yfinance returning OHLC: 2024-11-15 00:00:00+01:00 -> 2024-11-15 00:00:00+01:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 57.29999923706055 for 1COV.DE
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['SPY', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - SPY: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/SPY
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/SPY?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1197
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - SPY: yfinance received OHLC data: 2024-11-15 18:00:11 -> 2024-11-15 18:00:11
+yfinance - DEBUG - SPY: OHLC after cleaning: 2024-11-15 13:00:11-05:00 -> 2024-11-15 13:00:11-05:00
+yfinance - DEBUG - SPY: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - SPY: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 585.5698852539062 for SPY
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['HYMTF', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - HYMTF: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/HYMTF
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/HYMTF?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1139
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - HYMTF: yfinance received OHLC data: 2024-11-14 20:54:27 -> 2024-11-14 20:54:27
+yfinance - DEBUG - HYMTF: OHLC after cleaning: 2024-11-14 15:54:27-05:00 -> 2024-11-14 15:54:27-05:00
+yfinance - DEBUG - HYMTF: OHLC after combining events: 2024-11-14 00:00:00-05:00 -> 2024-11-14 00:00:00-05:00
+yfinance - DEBUG - HYMTF: yfinance returning OHLC: 2024-11-14 00:00:00-05:00 -> 2024-11-14 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 53.0 for HYMTF
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['SHEL', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - SHEL: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/SHEL
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/SHEL?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1249
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - SHEL: yfinance received OHLC data: 2024-11-15 18:00:11 -> 2024-11-15 18:00:11
+yfinance - DEBUG - SHEL: OHLC after cleaning: 2024-11-15 13:00:11-05:00 -> 2024-11-15 13:00:11-05:00
+yfinance - DEBUG - SHEL: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - SHEL: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 65.41000366210938 for SHEL
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['DAX', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - DAX: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/DAX
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/DAX?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1204
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - DAX: yfinance received OHLC data: 2024-11-15 17:50:32 -> 2024-11-15 17:50:32
+yfinance - DEBUG - DAX: OHLC after cleaning: 2024-11-15 12:50:32-05:00 -> 2024-11-15 12:50:32-05:00
+yfinance - DEBUG - DAX: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - DAX: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 32.89500045776367 for DAX
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['PLTR', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - PLTR: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/PLTR
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/PLTR?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1211
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - PLTR: yfinance received OHLC data: 2024-11-15 18:00:11 -> 2024-11-15 18:00:11
+yfinance - DEBUG - PLTR: OHLC after cleaning: 2024-11-15 13:00:11-05:00 -> 2024-11-15 13:00:11-05:00
+yfinance - DEBUG - PLTR: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - PLTR: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 64.09770202636719 for PLTR
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['UQ2B.DU', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - UQ2B.DU: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/UQ2B.DU
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/UQ2B.DU?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1108
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - UQ2B.DU: yfinance received OHLC data: 2024-11-15 16:45:53 -> 2024-11-15 16:45:53
+yfinance - DEBUG - UQ2B.DU: OHLC after cleaning: 2024-11-15 17:45:53+01:00 -> 2024-11-15 17:45:53+01:00
+yfinance - DEBUG - UQ2B.DU: OHLC after combining events: 2024-11-15 00:00:00+01:00 -> 2024-11-15 00:00:00+01:00
+yfinance - DEBUG - UQ2B.DU: yfinance returning OHLC: 2024-11-15 00:00:00+01:00 -> 2024-11-15 00:00:00+01:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 366.302001953125 for UQ2B.DU
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['DB', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - DB: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/DB
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/DB?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1195
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - DB: yfinance received OHLC data: 2024-11-15 17:58:52 -> 2024-11-15 17:58:52
+yfinance - DEBUG - DB: OHLC after cleaning: 2024-11-15 12:58:52-05:00 -> 2024-11-15 12:58:52-05:00
+yfinance - DEBUG - DB: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - DB: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 16.90959930419922 for DB
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['GS', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - GS: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/GS
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/GS?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1215
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - GS: yfinance received OHLC data: 2024-11-15 17:59:55 -> 2024-11-15 17:59:55
+yfinance - DEBUG - GS: OHLC after cleaning: 2024-11-15 12:59:55-05:00 -> 2024-11-15 12:59:55-05:00
+yfinance - DEBUG - GS: OHLC after combining events: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG - GS: yfinance returning OHLC: 2024-11-15 00:00:00-05:00 -> 2024-11-15 00:00:00-05:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 590.89501953125 for GS
+yfinance - DEBUG - Entering history()
+peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['MBG.DE', 1, 0])
+yfinance - DEBUG -  Entering history()
+yfinance - DEBUG - MBG.DE: Yahoo GET parameters: {'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -   Entering get()
+yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/MBG.DE
+yfinance - DEBUG - params={'range': '1d', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+yfinance - DEBUG -    Entering _get_cookie_and_crumb()
+yfinance - DEBUG - cookie_mode = 'basic'
+yfinance - DEBUG -     Entering _get_cookie_and_crumb_basic()
+yfinance - DEBUG - reusing cookie
+yfinance - DEBUG - reusing crumb
+yfinance - DEBUG -     Exiting _get_cookie_and_crumb_basic()
+yfinance - DEBUG -    Exiting _get_cookie_and_crumb()
+urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/MBG.DE?range=1d&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=2whoJT%2FmDOC HTTP/11" 200 1204
+yfinance - DEBUG - response code=200
+yfinance - DEBUG -   Exiting get()
+yfinance - DEBUG - MBG.DE: yfinance received OHLC data: 2024-11-15 16:38:43 -> 2024-11-15 16:38:43
+yfinance - DEBUG - MBG.DE: OHLC after cleaning: 2024-11-15 17:38:43+01:00 -> 2024-11-15 17:38:43+01:00
+yfinance - DEBUG - MBG.DE: OHLC after combining events: 2024-11-15 00:00:00+01:00 -> 2024-11-15 00:00:00+01:00
+yfinance - DEBUG - MBG.DE: yfinance returning OHLC: 2024-11-15 00:00:00+01:00 -> 2024-11-15 00:00:00+01:00
+yfinance - DEBUG -  Exiting history()
+yfinance - DEBUG - Exiting history()
+root - DEBUG - Fetched 52.95000076293945 for MBG.DE
+root - DEBUG - URTH: 480 * 156.44500732421875 = 75093.603515625
+root - DEBUG - WFC: 400 * 73.56500244140625 = 29426.0009765625
+root - DEBUG - HLBZF: 185 * 102.88999938964844 = 19034.64988708496
+root - DEBUG - C: 340 * 68.625 = 23332.5
+root - DEBUG - BPAQF: 2000 * 4.800000190734863 = 9600.000381469727
+root - DEBUG - POAHF: 150 * 37.5099983215332 = 5626.4997482299805
+root - DEBUG - EXV1.DE: 284 * 20.469999313354492 = 5813.479804992676
+root - DEBUG - 1COV.DE: 100 * 57.29999923706055 = 5729.999923706055
+root - DEBUG - SPY: 10 * 585.5698852539062 = 5855.6988525390625
+root - DEBUG - HYMTF: 100 * 53.0 = 5300.0
+root - DEBUG - SHEL: 75 * 65.41000366210938 = 4905.750274658203
+root - DEBUG - DAX: 6 * 32.89500045776367 = 197.37000274658203
+root - DEBUG - PLTR: 100 * 64.09770202636719 = 6409.770202636719
+root - DEBUG - UQ2B.DU: 5 * 366.302001953125 = 1831.510009765625
+root - DEBUG - DB: 1 * 16.90959930419922 = 16.90959930419922
+root - DEBUG - GS: 9 * 590.89501953125 = 5318.05517578125
+root - DEBUG - MBG.DE: 50 * 52.95000076293945 = 2647.5000381469727
